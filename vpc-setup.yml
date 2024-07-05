@@ -130,7 +130,7 @@
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{region}}"
         tags:
-          Name: Vprofile_pubRT
+          Name: Vprofile_privRT
         subnets:
           - "{{privSub1_out.subnet.id}}"
           - "{{privSub2_out.subnet.id}}"
