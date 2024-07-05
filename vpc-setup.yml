@@ -16,10 +16,10 @@
         state: "{{state}}"
       register: vpcout
 
-    - debug:
-        var: vpcout
+    #- debug:
+    #     var: vpcout
 
-    - name: Create Public Subnet in Zone 1
+    - name: Create Public Subnet1 in Zone 1
       ec2_vpc_subnet:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{region}}"
@@ -31,3 +31,63 @@
           Name: Vprofile-pubsub1
       register: pubsub1_out
 
+    - name: Create Public Subnet2 in Zone 2
+      ec2_vpc_subnet:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        az: "{{zone2}}"
+        state: "{{state}}"
+        cidr: "{{PubSub2Cidr}}"
+        map_public: yes
+        resource_tags:
+          Name: Vprofile-pubsub2
+      register: pubsub1_out
+
+    - name: Create Public Subnet3 in Zone 3
+      ec2_vpc_subnet:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        az: "{{zone3}}"
+        state: "{{state}}"
+        cidr: "{{PubSub3Cidr}}"
+        map_public: yes
+        resource_tags:
+          Name: Vprofile-pubsub3
+      register: pubsub1_out
+
+
+    - name: Create Private Subnet1 in Zone 1
+      ec2_vpc_subnet:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        az: "{{zone1}}"
+        state: "{{state}}"
+        cidr: "{{PrivSub1Cidr}}"
+        map_public: yes
+        resource_tags:
+          Name: Vprofile-privsub1
+      register: privsub1_out
+
+    - name: Create Private Subnet2 in Zone 2
+      ec2_vpc_subnet:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        az: "{{zone2}}"
+        state: "{{state}}"
+        cidr: "{{PrivSub2Cidr}}"
+        map_public: yes
+        resource_tags:
+          Name: Vprofile-privsub2
+      register: privsub2_out
+
+    - name: Create Private Subnet3 in Zone 3
+      ec2_vpc_subnet:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        az: "{{zone3}}"
+        state: "{{state}}"
+        cidr: "{{PrivSub1Cidr}}"
+        map_public: yes
+        resource_tags:
+          Name: Vprofile-privsub3
+      register: privsub3_out
