@@ -33,7 +33,7 @@
            Cdir_ip: "{{MYIP}}"
       register: BastionSG_out
 
-    - nam: creating Bastian Host
+    - name: creating Bastian Host
       ec2:
         key_name: krevor-key
         region: "{{region}}"
