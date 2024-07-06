@@ -1,0 +1,58 @@
+---
+- name: Setup Vprofile Bastion Host
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Import VPC setup Variables
+      include_vars: vars/bastion_setup
+
+    - name: create krevor ec2 key
+      ec2_key:
+        name: krevor-key
+        region: "{{region}}"
+      register: key_out
+
+    - name: save private key into bastion-key.pem
+      copy:
+        content: "{{key_out.key.private_key}}"
+        dest: "./bastion-key.pem"
+        mode: 0600
+      when: key_out.changed
+
+    - name: create sec group for bastion host
+      ec2_group:
+        name: bastion-host-sg
+        dscription: allow port 22 from everywhere and all port from sg
+        region: "{{region}}"
+        vpc_id: "{{vpcid: vpc-09e803d0049f7d4e6}}"
+        rules:
+         - proto: tcp
+           from_port: 22
+           to_port: 22
+           Cdir_ip: "{{MYIP}}"
+      register: BastionSG_out
+
+    - name: creating Bastian Host
+      ec2:
+        key_name: krevor-key
+        region: "{{region}}"
+        instance_type: t2.micro
+        image: "{{bastion_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          name: "Bastion_host"
+          projects: krevorsolutions
+          Owners: krevor Teams
+        exact_count: 1
+        count_tag:
+          name: "Bastion_host"
+          projects: krevorsolutions
+          Owners: krevor Teams
+        group_id: "{{BastionSG_out.group_id}}"
+      register: bastionHost_out
+
+
+
+
