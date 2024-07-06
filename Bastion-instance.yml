@@ -51,6 +51,7 @@
           projects: krevorsolutions
           Owners: krevor Teams
         group_id: "{{BastionSG_out.group_id}}"
+        vpc_subnetid: "{{pubsub1id}}"
       register: bastionHost_out
 
 
