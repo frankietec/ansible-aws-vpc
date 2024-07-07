@@ -58,7 +58,7 @@
       register: bastionHost_out
 
     - debug:
-        vars: bastionHost_out
+        var: bastionHost_out
 
 
 
