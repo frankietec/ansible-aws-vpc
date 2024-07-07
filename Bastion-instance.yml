@@ -36,6 +36,9 @@
            cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
+    - debug:
+        var: bastionHost_out
+
     - name: creating Bastian Host
       ec2_instance:
         key_name: krevor-key
@@ -57,8 +60,8 @@
         vpc_subnetid: "{{pubsub1id}}"
       register: bastionHost_out
 
-    - debug:
-        var: bastionHost_out
+    
+
 
 
 
