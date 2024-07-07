@@ -33,7 +33,7 @@
          - proto: tcp
            from_port: 22
            to_port: 22
-           Cdir_ip: "{{MYIP}}"
+           Cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
     - name: creating Bastian Host
