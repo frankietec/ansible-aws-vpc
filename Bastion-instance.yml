@@ -36,8 +36,6 @@
            cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
-    - debug:
-        var: bastionHost_out
 
     - name: creating Bastian Host
       ec2_instance:
@@ -60,7 +58,7 @@
         vpc_subnetid: "{{pubsub1id}}"
       register: bastionHost_out
 
-    
+
 
 
 
