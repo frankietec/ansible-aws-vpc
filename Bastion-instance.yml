@@ -7,6 +7,9 @@
     - name: Import VPC setup Variables
       include_vars: vars/bastion_setup
 
+    - name: Import VPC setup Variables
+      include_vars: vars/output_vrs
+
     - name: create krevor ec2 key
       ec2_key:
         name: krevor-key
@@ -25,7 +28,7 @@
         name: bastion-host-sg
         dscription: allow port 22 from everywhere and all port from sg
         region: "{{region}}"
-        vpc_id: vpc-09e803d0049f7d4e6
+        vpc_id: "{{vpcid}}"
         rules:
          - proto: tcp
            from_port: 22
