@@ -57,6 +57,8 @@
         vpc_subnetid: "{{pubsub1id}}"
       register: bastionHost_out
 
+    - debug:
+        var: bastionHost_out
 
 
 
