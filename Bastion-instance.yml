@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   gather_facts: no
+  import: json
   tasks:
     - name: Import VPC setup Variables
       include_vars: vars/bastion_setup
@@ -42,7 +43,7 @@
         key_name: krevor-key
         region: "{{region}}"
         instance_type: t2.micro
-        image: "{{bastion_ami}}"
+        image: json.loads"{{bastion_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
