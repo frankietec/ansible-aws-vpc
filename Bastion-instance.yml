@@ -44,7 +44,7 @@
         instance_type: t2.micro
         "image": "{{bastion_ami}}",
         wait: yes
-        wait_timeout: 300
+        "wait_timeout": 300
         instance_tags:
           name: "Bastion_host"
           projects: krevorsolutions
