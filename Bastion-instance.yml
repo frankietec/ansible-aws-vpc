@@ -38,11 +38,11 @@
 
 
     - name: creating Bastion Host
-      ec2_instance:
+      ec2:
         key_name: krevor-key
         region: "{{region}}"
         instance_type: t2.micro
-        image_id: "{{bastion_ami}}"
+        image: "{{bastion_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
