@@ -37,8 +37,8 @@
       register: BastionSG_out
 
 
-    - name: creating Bastion Host
-      ec2:
+    - ec2_instance:
+        name: creating-Bastion-Host
         key_name: krevor-key
         region: "{{region}}"
         instance_type: t2.micro
