@@ -4,65 +4,56 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: Import VPC setup Variables
+    - name: Import VPC setup Variable
       include_vars: vars/bastion_setup
 
-    - name: Import VPC setup Variables
+    - name: Import VPC setup Variable
       include_vars: vars/output_vars
 
-    - name: create krevor ec2 key
+    - name: Create vprofile ec2 key
       ec2_key:
-        name: krevor-key
+        name: vprofile-key
         region: "{{region}}"
       register: key_out
 
-    - name: save private key into bastion-key.pem
+
+    - name: Save private key into file bastion-key.pem
       copy:
         content: "{{key_out.key.private_key}}"
         dest: "./bastion-key.pem"
         mode: 0600
       when: key_out.changed
 
-    - name: create sec group for bastion host
+    - name: Create Sec Grp for bastion host
       ec2_group:
-        name: bastion-host-sg
-        description: allow port 22 from everywhere and all port from sg
+        name: Bastion-host-sg
+        description: Allow port 22 from everywhere and all port within sg
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         rules:
-         - proto: tcp
-           from_port: 22
-           to_port: 22
-           cidr_ip: "{{MYIP}}"
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
-
-    - ec2_instance:
-        name: creating-Bastion-Host
-        key_name: krevor-key
+    - name: Creating Bastion Host
+      ec2:
+        key_name: vprofile-key
         region: "{{region}}"
         instance_type: t2.micro
         image: "{{ bastion_ami }}"
         wait: yes
-        "wait_timeout": 300
+        wait_timeout: 300
         instance_tags:
-          name: "Bastion_host"
-          projects: krevorsolutions
-          Owners: krevor Teams
+          Name: "Bastion_host"
+          Project: Vprofile
+          Owner: DevOps Team
         exact_count: 1
         count_tag:
-          name: "Bastion_host"
-          projects: krevorsolutions
-          Owners: krevor Teams
+          Name: "Bastion_host"
+          Project: Vprofile
+          Owner: DevOps Team
         group_id: "{{BastionSG_out.group_id}}"
-        vpc_subnetid: "{{pubsub1id}}"
-      register: bastionHost_out
-
-
-
-
-
-
-
-
-
+        vpc_subnet_id: "{{pubsub1id}}"
+      register: bastionHost_outk
