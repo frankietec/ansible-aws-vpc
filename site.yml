@@ -1,4 +1,5 @@
 ---
-- import_playbook: Bastion-instance.yml
 - import_playbook: vpc-setup.yml
+- import_playbook: Bastion-instance.yml
+
 
