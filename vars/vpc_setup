@@ -24,11 +24,14 @@ zone3: us-east-2c
 state: present
 
 # Bastion vars
+import json
+
 image = '{"bastion_ami": "ami-08be1e3e6c338b037"}'
 
 try:
     dict_data = json.loads(image)
     print(dict_data)
+
 MYIP: 102.89.47.203/32
 
 
