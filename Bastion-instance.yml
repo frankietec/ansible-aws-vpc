@@ -44,6 +44,8 @@
         instance_type: t2.micro
         image:
           id: "{{ bastion_ami }}"
+          group_id: "{{BastionSG_out.group_id}}"
+          vpc_subnet_id: "{{pubsub1id}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
@@ -51,12 +53,10 @@
           Project: Vprofile
           Owner: DevOps Team
         exact_count: 1
-        count_tag:
-          Name: "Bastion_host"
-          Project: Vprofile
-          Owner: DevOps Team
-        group_id: "{{BastionSG_out.group_id}}"
-        vpc_subnet_id: "{{pubsub1id}}"
+        #count_tag:
+         # Name: "Bastion_host"
+          #Project: Vprofile
+          #Owner: DevOps Team
       register: bastionHost_out
 
 
