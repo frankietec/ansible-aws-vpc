@@ -25,10 +25,10 @@ state: present
 
 # Bastion vars
 
-image = '{"bastion_ami": "ami-08be1e3e6c338b037"}'
+bastion_ami = '{"image": "ami-08be1e3e6c338b037"}'
 
 try:
-    dict_data = json.loads(image)
+    dict_data = json.loads(bastion_ami)
     print(dict_data)
 
 MYIP: 102.89.47.203/32
