@@ -43,6 +43,9 @@
         region: "{{region}}"
         instance_type: t2.micro
         image: "{{ image | default('{bastion_ami}') | from_json }}"
+        rescue:
+          - debug:
+              msg: "Failed to process image: {{ image }}"
         wait: yes
         wait_timeout: 300
         instance_tags:
