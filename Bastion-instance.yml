@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   gather_facts: no
+  vars:
+    bastion_ami:  "ami-08be1e3e6c338b037"
   tasks:
     - name: Import VPC setup Variable
       include_vars: vars/vpc_setup
@@ -57,6 +59,8 @@
         group_id: "{{BastionSG_out.group_id}}"
         vpc_subnet_id: "{{pubsub1id}}"
       register: bastionHost_out
+
+
 
 
 
