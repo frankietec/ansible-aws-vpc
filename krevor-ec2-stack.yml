@@ -13,8 +13,8 @@
     - name: create ec2 key
       ec2_key:
         name: krevorkey
-        region: "{{region}}"
-        register: krevorkey_out
+        no_log: true
+      register: krevorkey_out
 
     - name: save krevor key into loginkey_krevor.pem
       copy:
