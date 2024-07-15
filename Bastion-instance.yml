@@ -52,7 +52,7 @@
         wait_timeout: 300
         tags:
           Environment: production
-        register: bastionHost_out
+
 
 
     #- name: Creating Bastion Host
