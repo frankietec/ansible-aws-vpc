@@ -21,6 +21,6 @@
         content: "{{krevorkey_out.key.private_key}}"
         dest: "./loginkey_krevor.pem"
         mode: 0600
-      when: keyout.changed
+      when: krevorkey_out.changed
 
 
