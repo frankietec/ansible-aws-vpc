@@ -9,3 +9,6 @@ igwid: igw-0b3c1cb239ba383d9
 NATGWid: nat-08c609f2cd8b2a712
 pubRTid: rtb-059365d1f359101ab
 privRT: rtb-0e082cb7852fa966a
+
+#region
+region: us-east-2
