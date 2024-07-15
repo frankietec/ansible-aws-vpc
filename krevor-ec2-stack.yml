@@ -13,7 +13,7 @@
     - name: create ec2 key
       ec2_key:
         name: krevorkey
-        no_log: true
+      no_log: true
       register: krevorkey_out
 
     - name: save krevor key into loginkey_krevor.pem
