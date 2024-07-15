@@ -47,7 +47,7 @@
         security_group: "{{BastionSG_out.group_id}}"
         network:
           assign_public_ip: true
-        image_id: ami-08be1e3e6c338b037
+        image_id: "{{ami-08be1e3e6c338b037}}"
         exact_count: 1
         wait: yes
         wait_timeout: 300
