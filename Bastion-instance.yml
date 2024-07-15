@@ -41,6 +41,7 @@
       amazon.aws.ec2_instance:
         name: "Bastion-host"
         key_name: "vprofile-key"
+        region: "{{region}}"
         vpc_subnet_id: "{{pubsub1id}}"
         instance_type: t2.micro
         security_group: "{{BastionSG_out.group_id}}"
