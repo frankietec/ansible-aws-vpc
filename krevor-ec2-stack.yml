@@ -1,0 +1,26 @@
+---
+- name: krevor ec2 stack
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: import vpc setup variables
+      include_vars: vars/output_vars
+
+    - name: import krevor stack variables
+      include_vars: vars/krevorstacksetup
+
+    - name: create ec2 key
+      amazon.aws.ec2_key:
+        name: krevorkey
+        no_log: true
+        register: krevorkey_out
+
+    - name: save krevor key into loginkey_krevor.pem
+      copy:
+        content: "{{krevorkey_out.key.private_key}}"
+        dest: "./loginkey_krevor.pem"
+        mode: 0600
+        when: keyout.changed
+
+
