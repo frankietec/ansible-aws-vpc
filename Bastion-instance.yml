@@ -53,6 +53,19 @@
         wait_timeout: 300
         tags:
           Environment: production
+        group_id: "{{BastionSG_out.group_id}}"
+      register: BastionSG_out
+
+    - name: Insert/Update "BastionSGid" in vars/output_vars
+      ansible.builtin.blockinfile:
+        path:  vars/output_vars
+        backup: yes
+        block: |
+          BastionSGid: BastionSG_out.group_id}}
+          
+   
+          
+
 
 
 
