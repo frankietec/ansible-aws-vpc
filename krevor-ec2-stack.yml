@@ -36,4 +36,24 @@
             rule_desc: allow all on port 80
       register: krevorELBSG_out
 
+    - name: Create security group for krevor stack
+      amazon.aws.ec2_security_group:
+        name: krevorstack-sg
+        description: allow port 80 from everywhere and all ports from sg
+        vpc_id: "{{vpcid}}"
+        purge_rules: no
+        rules:
+          - proto: tcp
+            ports:
+              - 80
+            rule_desc: allow all on port 80
+            group_id: "{{krevorELBSG_out.group_id}}"
+
+
+          - proto: tcp
+            ports:
+              - 22
+            rule_desc: allow all on port 22
+            group_id: "{{BastionSGid}}"
+      register: krevorstackSG_out
 
