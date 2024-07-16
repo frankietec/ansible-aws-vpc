@@ -55,12 +55,7 @@
           Environment: production
       register: BastionHost_out
 
-    - name: Insert/Update "BastionSGid" in vars/output_vars
-      ansible.builtin.blockinfile:
-        path:  vars/output_vars
-        backup: yes
-        block: |
-          BastionSGid: {{BastionSG_out.security_group}}
+
           
    
           
