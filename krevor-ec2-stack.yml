@@ -40,7 +40,7 @@
     - name: Create security group for krevor stack
       amazon.aws.ec2_security_group:
         name: krevorstack-sg
-        description: allow port 80 from everywhere and all ports from sg
+        description: allow port 22 from everywhere and all ports from sg
         vpc_id: "{{vpcid}}"
         region: "{{region}}"
         purge_rules: no
