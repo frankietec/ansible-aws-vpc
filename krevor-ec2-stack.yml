@@ -71,5 +71,99 @@
             group_id: "{{krevorstackSG_out.group_id}}"
 
 
+    - name: Creating nginx web01
+      amazon.aws.ec2_instance:
+        name: "web01"
+        key_name: "vprofile-key"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        instance_type: t2.micro
+        security_group: "{{krevorstackSG_out.group_id}}"
+        network:
+          assign_public_ip: true
+        image_id: "{{nginx_ami}}"
+        exact_count: 1
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Environment: Deploy
+      register: web01_out
 
+
+    - name: Creating Tomcat App01
+      amazon.aws.ec2_instance:
+        name: "app01"
+        key_name: "vprofile-key"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        instance_type: t2.micro
+        security_group: "{{krevorstackSG_out.group_id}}"
+        network:
+          assign_public_ip: true
+        image_id: "{{tomcat_ami}}"
+        exact_count: 1
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Environment: Deploy
+      register: app01_out
+
+    - name: Creating memcache mc01
+      amazon.aws.ec2_instance:
+        name: "mc01"
+        key_name: "vprofile-key"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        instance_type: t2.micro
+        security_group: "{{krevorstackSG_out.group_id}}"
+        network:
+          assign_public_ip: true
+        image_id: "{{memcache_ami}}"
+        exact_count: 1
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Environment: Deploy
+      register: mc01_out
+
+
+    - name: Creating rabbitmq rmq01
+      amazon.aws.ec2_instance:
+        name: "rmq01"
+        key_name: "vprofile-key"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        instance_type: t2.micro
+        security_group: "{{krevorstackSG_out.group_id}}"
+        network:
+          assign_public_ip: true
+        image_id: "{{rmq_ami}}"
+        exact_count: 1
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Environment: Deploy
+      register: rmq01_out
+
+
+    - name: Creating mysql db01
+      amazon.aws.ec2_instance:
+        name: "db01"
+        key_name: "vprofile-key"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        instance_type: t2.micro
+        security_group: "{{krevorstackSG_out.group_id}}"
+        network:
+          assign_public_ip: true
+        image_id: "{{mysql_ami}}"
+        exact_count: 1
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Environment: Deploy
+      register: db01_out
+
+    - debug:
+        var: db01_out
 
