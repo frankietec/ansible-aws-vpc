@@ -44,7 +44,7 @@
         region: "{{region}}"
         vpc_subnet_id: "{{pubsub1id}}"
         instance_type: t2.micro
-        security_group: "{{BastionSG_out.security_group}}"
+        security_group: "{{BastionSG_out.group_id}}"
         network:
           assign_public_ip: true
         image_id: "{{bastion_ami}}"
@@ -63,7 +63,7 @@
         append_newline: true
         prepend_newline: true
         block: |
-          BastionSGid: {{BastionSG_out.security_group}}
+          BastionSGid: {{BastionSG_out.group_id}}
    
           
 
