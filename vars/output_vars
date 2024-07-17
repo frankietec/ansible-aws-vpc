@@ -14,7 +14,7 @@ privRT: rtb-0e082cb7852fa966a
 region: us-east-2
 
 #BastionSGid
-BastionSGid:
+
 
 # BEGIN ANSIBLE MANAGED BLOCK
 BastionSGid: sg-0b69955fde2fa75f0

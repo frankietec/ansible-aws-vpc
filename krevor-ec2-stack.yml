@@ -57,3 +57,16 @@
             group_id: "{{BastionSGid}}"
       register: krevorstackSG_out
 
+    - name: update security group with own sg id
+      amazon.aws.ec2_security_group:
+        name: krevorstack-sg
+        description: allow port 22k from everywhere and all ports from sg
+        vpc_id: "{{vpcid}}"
+        purge_rules: no
+        rules:
+          - proto: all
+            group_id: "{{krevorstackSG_out.group_id}}"
+
+
+
+
