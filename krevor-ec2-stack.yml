@@ -28,6 +28,7 @@
         name: krevorELB-sg
         description: allow port 80 from everywhere and all ports from sg
         vpc_id: "{{vpcid}}"
+        region: "{{region}}"
         rules:
           - proto: tcp
             ports:
@@ -41,6 +42,7 @@
         name: krevorstack-sg
         description: allow port 80 from everywhere and all ports from sg
         vpc_id: "{{vpcid}}"
+        region: "{{region}}"
         purge_rules: no
         rules:
           - proto: tcp
@@ -62,6 +64,7 @@
         name: krevorstack-sg
         description: allow port 22k from everywhere and all ports from sg
         vpc_id: "{{vpcid}}"
+        region: "{{region}}"
         purge_rules: no
         rules:
           - proto: all
