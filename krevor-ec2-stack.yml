@@ -198,7 +198,7 @@
           mc01_ip: {{mc01_out.instance_ids[0].private_ip_address}}
           rmq01_ip: {{rmq01_out.instance_ids[0].private_ip_address}}
           app01_ip: {{app01_out.instance_ids[0].private_ip_address}}
-          db01_ip: {{db01_out.instance_ids[0]."private_ip_address}}
+          db01_ip: {{db01_out.instance_ids[0].private_ip_address}}
 
     - name: save krevor key into provision-stack directory
       copy:
