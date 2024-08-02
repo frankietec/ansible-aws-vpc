@@ -165,7 +165,7 @@
       register: db01_out
 
     - debug:
-        var: db01_out.instance_ids
+        var: db01_out.instance_ids[0].id
 
     - amazon.aws.elb_classic_lb:
             name: "krevor-elb"
@@ -173,7 +173,7 @@
             state: present
             region: "{{region}}"
             instance_ids:
-              - "{{web01_out.instance_ids}}"
+              - "{{web01_out.instance_ids[0].id}}"
             purge_instance_ids: true
             security_group_ids: "{{krevorELBSG_out.group_id}}"
             subnets:
