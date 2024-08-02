@@ -169,7 +169,7 @@
 
 
     - local_action:
-    - amazon.aws.elb_classic_lb:
+      amazon.aws.elb_classic_lb:
             name: "krevor-elb"
             scheme: internal
             state: present
