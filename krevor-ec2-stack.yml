@@ -168,8 +168,8 @@
         var: db01_out.instance_ids
 
 
-    - local_action:
-        - amazon.aws.elb_classic_lb:
+
+    - amazon.aws.elb_classic_lb:
             name: "krevor_elb"
             scheme: internal
             state: present
@@ -188,8 +188,8 @@
                 load_balancer_port: 80
                 instance_port: 80
 
-        - name: Insert/Update "Host IP and name " in provision-stack/group_vars/hostip
-          ansible.builtin.blockinfile:
+    - name: Insert/Update "Host IP and name " in provision-stack/group_vars/hostip
+      ansible.builtin.blockinfile:
             path: provision-stack/group_vars/hostip
             backup: yes
             append_newline: true
@@ -201,15 +201,15 @@
               app01_ip: {{app01_out.instance_ids[0].private_ip}}
               db01_ip: {{db01_out.instance_ids[0].private_ip}}
 
-        - name: save krevor key into provision-stack directory
-          copy:
+    - name: save krevor key into provision-stack directory
+      copy:
             content: "{{krevorkey_out.key.private_key}}"
             dest: "./provision-stack/loginkey_krevor.pem"
             mode: 0600
             when: krevorkey_out.changed
 
-        - name: Insert/Update "Inventory file " in provision-stack/inventory-krevor
-          ansible.builtin.blockinfile:
+    - name: Insert/Update "Inventory file " in provision-stack/inventory-krevor
+      ansible.builtin.blockinfile:
             path: provision-stack/inventory-krevor
             backup: yes
             append_newline: true
