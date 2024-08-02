@@ -194,11 +194,11 @@
         append_newline: true
         prepend_newline: true
         block: |
-          Web01_ip: {{web01_out.instance_ids[0].private_ip_address[2]}}
-          mc01_ip: {{mc01_out.instance_ids[0].private_ip_address[2]}}
-          rmq01_ip: {{rmq01_out.instance_ids[0].private_ip_address[2]}}
-          app01_ip: {{app01_out.instance_ids[0].private_ip_address[2]}}
-          db01_ip: {{db01_out.instance_ids[0].private_ip_address[2]}}
+          Web01_ip: {{web01_out.instance_ids[0].private_ip_address[0]}}
+          mc01_ip: {{mc01_out.instance_ids[0].private_ip_address[0]}}
+          rmq01_ip: {{rmq01_out.instance_ids[0].private_ip_address[0]}}
+          app01_ip: {{app01_out.instance_ids[0].private_ip_address[0]}}
+          db01_ip: {{db01_out.instance_ids[0].private_ip_address[0]}}
 
     - name: save krevor key into provision-stack directory
       copy:
@@ -214,11 +214,11 @@
         append_newline: true
         prepend_newline: true
         block: |
-          Web01 ansible_host= {{web01_out.instance_ids[0].private_ip_address[2]}}
-          mc01 ansible_host={{mc01_out.instance_ids[0].private_ip_address[2]}}
-          rmq01 ansible_host={{rmq01_out.instance_ids[0].private_ip_address[2]}}
-          app01 ansible_host={{app01_out.instance_ids[0].private_ip_address[2]}}
-          db01 ansible_host={{db01_out.instance_ids[0].private_ip_address[2]}}
+          Web01 ansible_host= {{web01_out.instance_ids[0].private_ip_address[0]}}
+          mc01 ansible_host={{mc01_out.instance_ids[0].private_ip_address[0]}}
+          rmq01 ansible_host={{rmq01_out.instance_ids[0].private_ip_address[0]}}
+          app01 ansible_host={{app01_out.instance_ids[0].private_ip_address[0]}}
+          db01 ansible_host={{db01_out.instance_ids[0].private_ip_address[0]}}
           cntrl ansible_host=127.0.0.1 ansible_connection=local
           
           [websrvgrp]
