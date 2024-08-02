@@ -206,7 +206,7 @@
             mode: 0600
             when: krevorkey_out.changed
 
-    - name: Insert/Update "Inventory file " in provision-stack/inventory-krevor
+    - name: Insert/Update Inventory file  in provision-stack/inventory-krevor
       ansible.builtin.blockinfile:
             path: provision-stack/inventory-krevor
             backup: yes
