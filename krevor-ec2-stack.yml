@@ -168,7 +168,7 @@
         var: db01_out.instance_ids[0]
 
     - debug:
-        var: private_ip_addresses
+        var: private_ip_addresses:"{{assign_public_ip}}"
 
 
 
