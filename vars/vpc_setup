@@ -27,4 +27,6 @@ state: present
 bastion_ami: ami-08be1e3e6c338b037
 MYIP: 102.88.71.226/32
 
+#private_ip_address
+private_ip_address: assign_public_ip
 
