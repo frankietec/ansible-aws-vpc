@@ -170,7 +170,6 @@
     - local_action:
         - amazon.aws.elb_classic_lb:
             name: "krevor_elb"
-            scheme: internal
             state: present
             region: "{{region}}"
             instance_ids:
