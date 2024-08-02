@@ -173,7 +173,7 @@
             state: present
             region: "{{region}}"
             instance_ids:
-              - "{{web01_out.tagged_instances[0].id}}"
+              - "{{web01_out.instance_id}}"
             purge_instance_ids: true
             security_group_ids: "{{krevorELBSG_out.group_id}}"
             subnets:
