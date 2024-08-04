@@ -35,7 +35,7 @@
       copy:
         content: "{{ new_krevor_key_out.key.private_key }}"
         dest: "./new_loginkey_krevor.pem"
-        mode: '0600'
+        mode: '0400'
       when: new_krevor_key_out.changed
 
 
@@ -224,7 +224,7 @@
       copy:
         content: "{{ new_krevor_key_out.key.private_key }}"
         dest: provision-stack/new_loginkey_krevor.pem
-        mode: '0600'
+        mode: '0400'
       when: new_krevor_key_out.changed
 
 
