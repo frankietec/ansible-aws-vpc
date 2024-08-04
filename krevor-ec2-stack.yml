@@ -223,7 +223,7 @@
     - name: Save the new private key into the provision-stack directory
       copy:
         content: "{{ new_krevor_key_out.key.private_key }}"
-        dest: "/provision-stack/new_loginkey_krevor.pem"
+        dest: provision-stack/new_loginkey_krevor.pem
         mode: '0600'
       when: new_krevor_key_out.changed
 
