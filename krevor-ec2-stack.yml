@@ -198,15 +198,11 @@
         prepend_newline: true
         block: |
           web01_ip: "WEB01 instance private IP: {{ web01_out.instances[0].private_ip_address }}"
-          web01_id: mc01_out.instance_ids[0]
           mc01_ip: "MC01 instance private IP: {{ mc01_out.instances[0].private_ip_address }}"
-          mc01_id:   mc01_out.instance_ids[0]
           rmq01_ip: "RMQ01 instance private IP: {{ rmq01_out.instances[0].private_ip_address }}"
-          rmq01_id: rmq01_out.instance_ids[0]
           app01_ip: "APP01 instance private IP: {{ app01_out.instances[0].private_ip_address }}"
-          app01_id: app01_out.instance_ids[0]
           db01_ip: "DB01 instance private IP: {{ db01_out.instances[0].private_ip_address }}"
-          db01_id: db01_out.instance_ids[0]
+          
 
     - name: save krevor key into provision-stack directory
       copy:
