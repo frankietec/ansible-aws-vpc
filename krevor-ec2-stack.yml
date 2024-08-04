@@ -204,21 +204,12 @@
           db01_ip: {{ db01_out.instances[0].private_ip_address }}
       
 
-    - name: Create a new key pair
-      amazon.aws.ec2_key:
-        name: new_krevor_key
-        region: "{{ region }}"
-        state: present
-        force: yes
-      register: new_krevor_key_out
-
-    - name: Save the new private key into the provision-stack directory
+    - name: save private key into provision-stack directory
       copy:
-        content: "{{ new_krevor_key_out.key.private_key }}"
-        dest: "/provision-stack/new_loginkey_krevor.pem"
-        mode: '0600'
-      when: new_krevor_key_out.changed
-
+        content: "{{krevorkey_out.key.private_key}}"
+        dest: "/provision-stack/loginkey_krevor.pem"
+        mode: 0600
+        when: krevorkey_out.changed
 
 
     - name: Insert/Update Inventory file  in provision-stack/inventory-krevor
