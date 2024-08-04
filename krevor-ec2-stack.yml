@@ -24,7 +24,7 @@
       when: krevorkey_out.changed
 
     - debug:
-        msg: "{{ krevor_key.private_key | default('No private key found') }}"
+        var: "{{ krevor_key.private_key | default('No private key found') }}"
 
     - name: Create security group for ELB(Elastic Load Balancer)
       amazon.aws.ec2_security_group:
@@ -210,7 +210,7 @@
     - name: save krevor key into provision-stack directory
       copy:
         content: "{{krevorkey_out.key.private_key}}"
-        dest: "./provision-stack/loginkey_krevor.pem"
+        dest: provision-stack/loginkey_krevor.pem
         mode: 0600
         when: krevorkey_out.changed
 
