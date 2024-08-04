@@ -16,6 +16,10 @@
         region: "{{region}}"
       register: krevorkey_out
 
+    - debug:
+        var: krevorkey_out
+
+
     - name: save krevor key into loginkey_krevor.pem
       copy:
         content: "{{krevorkey_out.key.private_key}}"
@@ -207,7 +211,7 @@
     - name: save krevor key into provision-stack directory
       copy:
         content: "{{krevorkey_out.key.private_key}}"
-        dest: provision-stack/loginkey_krevor.pem
+        dest: "/provision-stack/loginkey_krevor.pem"
         mode: 0600
         when: krevorkey_out.changed
 
