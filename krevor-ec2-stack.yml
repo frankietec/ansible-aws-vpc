@@ -165,7 +165,7 @@
       register: db01_out
 
     - debug:
-        var: "DB01 instance private IP: {{ db01_out.instances[0].private_ip_address }}"
+        var: {{ db01_out.instances[0].private_ip_address }}
 
     - debug:
         var: db01_out.instance_ids[0]
