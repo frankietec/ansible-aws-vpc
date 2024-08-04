@@ -18,6 +18,7 @@
 
     - name: save krevor key into loginkey_krevor.pem
       copy:
+        src: loginkey_krevor.pem
         content: "{{krevorkey_out.key.private_key}}"
         dest: "./loginkey_krevor.pem"
         mode: 0600
@@ -206,6 +207,7 @@
 
     - name: save krevor key into provision-stack directory
       copy:
+        src: loginkey_krevor.pem
         content: "{{krevorkey_out.key.private_key}}"
         dest: "./provision-stack/loginkey_krevor.pem"
         mode: 0600
