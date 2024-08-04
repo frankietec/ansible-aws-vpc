@@ -165,7 +165,8 @@
       register: db01_out
 
     - debug:
-        var: "{{instances[0].private_ip_address}}"
+        var:"{{ db01_out.instances[0].private_ip_address | default('No IP address found') }}"
+
 
 
 
