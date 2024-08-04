@@ -18,7 +18,6 @@
 
     - name: save krevor key into loginkey_krevor.pem
       copy:
-        src: loginkey_krevor.pem
         content: "{{krevorkey_out.key.private_key}}"
         dest: "./loginkey_krevor.pem"
         mode: 0600
@@ -203,15 +202,17 @@
           rmq01_ip: {{ rmq01_out.instances[0].private_ip_address }}
           app01_ip: {{ app01_out.instances[0].private_ip_address }}
           db01_ip: {{ db01_out.instances[0].private_ip_address }}
-          
+      
 
     - name: save krevor key into provision-stack directory
       copy:
-        src: loginkey_krevor.pem
         content: "{{krevorkey_out.key.private_key}}"
         dest: "./provision-stack/loginkey_krevor.pem"
         mode: 0600
         when: krevorkey_out.changed
+
+    - debug:
+        msg: "{{ krevor_key.private_key | default('No private key found') }}"
 
     - name: Insert/Update Inventory file  in provision-stack/inventory-krevor
       ansible.builtin.blockinfile:
