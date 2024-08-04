@@ -168,7 +168,7 @@
         var: db01_out.instance_ids[0]
 
     - debug:
-        var: db01_out.private_ip_address
+        var: db01_out."{{privsub1id}}"
 
 
 
