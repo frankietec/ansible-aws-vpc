@@ -165,10 +165,10 @@
       register: db01_out
 
     - debug:
-        var: db01_out.instance_ids[0]
+        var: db01_out.instance_ids[0].
 
     - debug:
-        var: private_ip_address.true
+        var: network
 
 
 
