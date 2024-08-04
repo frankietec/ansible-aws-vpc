@@ -165,10 +165,10 @@
       register: db01_out
 
     - debug:
-        var: db01_out.instance_ids[0]
+        var: db01_out
 
-    - debug:
-        var: db01_out."{{privsub1id}}"
+    #- debug:
+     #   var: db01_out.172.20.0
 
 
 
