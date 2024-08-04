@@ -165,10 +165,9 @@
       register: db01_out
 
     - debug:
-        var: db01_out.instance_ids[0]
+        var: db01_out.instance_ids[0].netork_interface
 
-    - debug:
-        var: network
+
 
 
 
