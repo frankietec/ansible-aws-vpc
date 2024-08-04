@@ -23,6 +23,9 @@
         mode: 0600
       when: krevorkey_out.changed
 
+    - debug:
+        msg: "{{ krevor_key.private_key | default('No private key found') }}"
+
     - name: Create security group for ELB(Elastic Load Balancer)
       amazon.aws.ec2_security_group:
         name: krevorELB-sg
@@ -211,8 +214,6 @@
         mode: 0600
         when: krevorkey_out.changed
 
-    - debug:
-        msg: "{{ krevor_key.private_key | default('No private key found') }}"
 
     - name: Insert/Update Inventory file  in provision-stack/inventory-krevor
       ansible.builtin.blockinfile:
